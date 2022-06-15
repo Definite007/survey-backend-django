@@ -22,15 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
-# SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ["survey-backend-kiosk.herokuapp.com",
-                "localhost",
-                "survey-kiosk-c5934.web.app"
+                '0.0.0.0',
+                'localhost',
+                '127.0.0.1'
 ]
 
 
@@ -45,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'home'
+    'home.apps.HomeConfig',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
@@ -87,8 +89,12 @@ WSGI_APPLICATION = 'surveyback.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd15utfanp3tskm',
+        'USER': 'mgjwzbyqbnsumg',
+        'PASSWORD': '7cf040d34ca167d37ed59d72e72657e81c6fbc95a48bfc8e0a5641ed90edfbb7',
+        'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
