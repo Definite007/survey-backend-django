@@ -1,4 +1,6 @@
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+from django.contrib import messages
 from home.serializers import FeedSerializer
 from rest_framework.parsers import JSONParser
 from home.models import Feedback
@@ -11,7 +13,4 @@ def index(request):
         if feed_serializer.is_valid():
             feed_serializer.save()
         return JsonResponse("Added Successfully!!" , safe=False)
-    return JsonResponse("Failed to Add.",safe=False)
-
-
-    # https://survey-backend-kiosk.herokuapp.com/ | https://git.heroku.com/survey-backend-kiosk.git
+    return HttpResponse("Failed to Add.",safe=False)
