@@ -13,4 +13,7 @@ def index(request):
         if feed_serializer.is_valid():
             feed_serializer.save()
         return JsonResponse("Added Successfully!!" , safe=False)
-    return HttpResponse("Failed to Add.",safe=False)
+    return JsonResponse("The website is running successfully",safe=False)
+
+
+    # https://git.heroku.com/survey-backend-kiosk.git | https://survey-backend-kiosk.herokuapp.com/
