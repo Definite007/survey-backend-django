@@ -149,7 +149,7 @@ CSRF_TRUSTED_ORIGINS = ['https://survey-kiosk-c5934.web.app',
                         'https://survey-kiosk-c5934.firebaseapp.com'
                          '23.22.130.173:443']
 
-CORS_ALLOWED_ORIGINS = ['https://survey-kiosk-c5934.web.app',
+CORS_ALLOWED_WHITELIST = ['https://survey-kiosk-c5934.web.app',
                         'https://survey-kiosk-c5934.firebaseapp.com'
                          '23.22.130.173:443']
 
