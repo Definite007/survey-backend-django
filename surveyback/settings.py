@@ -145,7 +145,7 @@ CSRF_COOKIE_HTTPONLY = False  # this is the default, and should be kept this way
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
 CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
 
-CSRF_TRUSTED_ORIGINS = ['https://survey-kiosk-c5934.web.app']
+CSRF_TRUSTED_ORIGINS = ['https://survey-kiosk-c5934.web.app', '23.22.130.173:443']
 
 CORS_ALLOWED_ORIGINS = ['https://survey-kiosk-c5934.web.app', '23.22.130.173:443']
 
