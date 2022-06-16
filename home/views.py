@@ -13,7 +13,11 @@ def index(request):
         if feed_serializer.is_valid():
             feed_serializer.save()
         return JsonResponse("Added Successfully!!" , safe=False)
-    return JsonResponse("The website is running successfully",safe=False)
+    feedback = Feedback.objects.all()
+    feed_serializer = FeedSerializer(feedback, many=True)
+    context = {"data": feed_serializer.data}
+    return render(request,'index.html', context)
+        # feed_serializer.data, safe=False
 
 
     # https://git.heroku.com/survey-backend-kiosk.git | https://survey-backend-kiosk.herokuapp.com/
