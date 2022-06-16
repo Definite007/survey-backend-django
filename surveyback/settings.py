@@ -145,6 +145,8 @@ CSRF_COOKIE_HTTPONLY = False  # this is the default, and should be kept this way
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
 CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 CSRF_TRUSTED_ORIGINS = ['https://survey-kiosk-c5934.web.app',
                         'https://survey-kiosk-c5934.firebaseapp.com'
                          '23.22.130.173:443']
