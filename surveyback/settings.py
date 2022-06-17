@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["survey-backend-kiosk.herokuapp.com",
                 '0.0.0.0',
@@ -52,15 +52,15 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
 
-    'django.middleware.common.CommonMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'surveyback.urls'
@@ -143,16 +143,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_USE_SESSIONS = False
 CSRF_COOKIE_HTTPONLY = False  # this is the default, and should be kept this way
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
-CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
-
-CORS_ORIGIN_ALLOW_ALL = True
+CSRF_HEADER_NAME = 'X_XSRF_TOKEN'
 
 CSRF_TRUSTED_ORIGINS = ['https://survey-kiosk-c5934.web.app',
                         'https://survey-kiosk-c5934.firebaseapp.com',
-                         '23.22.130.173:443']
+                         'http://localhost:4200']
 
-CORS_ALLOWED_WHITELIST = ('https://survey-kiosk-c5934.web.app',
+CORS_ALLOWED_WHITELIST = ['https://survey-kiosk-c5934.web.app',
                         'https://survey-kiosk-c5934.firebaseapp.com',
-                         '23.22.130.173:443',)
+                          'http://localhost:4200']
 
 STATIC_ROOT = BASE_DIR / 'static'
