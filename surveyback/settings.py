@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
-# SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'rest_framework',
-    'home.apps.HomeConfig',
+    'corsheaders',
+    'home',
     'whitenoise.runserver_nostatic'
 ]
 
@@ -54,13 +54,13 @@ MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'surveyback.urls'
@@ -147,7 +147,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_USE_SESSIONS = False
-CSRF_COOKIE_HTTPONLY = True  # this is the default, and should be kept this way
+CSRF_COOKIE_HTTPONLY = False  # this is the default, and should be kept this way
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
 CSRF_HEADER_NAME = 'X_XSRF_TOKEN'
 
@@ -157,8 +157,12 @@ CSRF_TRUSTED_ORIGINS = ['https://survey-kiosk-c5934.web.app',
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-# CORS_ALLOWED_WHITELIST = ['https://survey-kiosk-c5934.web.app',
-#                         'https://survey-kiosk-c5934.firebaseapp.com',
-#                           'http://localhost:4200']
+CORS_ALLOW_CREDENTIALS = False
+
+CORS_ALLOW_HEADERS = ['*']
+
+CORS_ALLOWED_WHITELIST = ('https://survey-kiosk-c5934.web.app',
+                        'https://survey-kiosk-c5934.firebaseapp.com',
+                          'http://localhost:4200',)
 
 STATIC_ROOT = BASE_DIR / 'static'
