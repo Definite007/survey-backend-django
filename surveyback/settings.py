@@ -22,11 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
+# SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["survey-backend-kiosk.herokuapp.com",
                 '0.0.0.0',
