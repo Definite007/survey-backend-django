@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'django-insecure--)qavl2t_g^5(-n85%k-*tn!^pe1rpb3!6_q2t0^u$y(&evid%'
+# SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,17 +87,23 @@ WSGI_APPLICATION = 'surveyback.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd15utfanp3tskm',
+#         'USER': 'mgjwzbyqbnsumg',
+#         'PASSWORD': '7cf040d34ca167d37ed59d72e72657e81c6fbc95a48bfc8e0a5641ed90edfbb7',
+#         'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd15utfanp3tskm',
-        'USER': 'mgjwzbyqbnsumg',
-        'PASSWORD': '7cf040d34ca167d37ed59d72e72657e81c6fbc95a48bfc8e0a5641ed90edfbb7',
-        'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -141,7 +147,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_USE_SESSIONS = False
-CSRF_COOKIE_HTTPONLY = False  # this is the default, and should be kept this way
+CSRF_COOKIE_HTTPONLY = True  # this is the default, and should be kept this way
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
 CSRF_HEADER_NAME = 'X_XSRF_TOKEN'
 
@@ -149,8 +155,10 @@ CSRF_TRUSTED_ORIGINS = ['https://survey-kiosk-c5934.web.app',
                         'https://survey-kiosk-c5934.firebaseapp.com',
                          'http://localhost:4200']
 
-CORS_ALLOWED_WHITELIST = ['https://survey-kiosk-c5934.web.app',
-                        'https://survey-kiosk-c5934.firebaseapp.com',
-                          'http://localhost:4200']
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOWED_WHITELIST = ['https://survey-kiosk-c5934.web.app',
+#                         'https://survey-kiosk-c5934.firebaseapp.com',
+#                           'http://localhost:4200']
 
 STATIC_ROOT = BASE_DIR / 'static'
