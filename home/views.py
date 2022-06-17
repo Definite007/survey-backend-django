@@ -4,10 +4,10 @@ from django.contrib import messages
 from home.serializers import FeedSerializer
 from rest_framework.parsers import JSONParser
 from home.models import Feedback
-# from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-# @csrf_exempt
+@csrf_exempt
 def index(request):
     if request.method=='POST':
         feed_data=JSONParser().parse(request)
